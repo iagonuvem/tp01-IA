@@ -154,10 +154,10 @@ class Mouse(setup.Agent):
             print("mouse random generate..")
             return
 
-        if self.cell == cheese.cell:
-            self.mouseWin += 1
-            reward = 50
-            cheese.cell = pick_random_location()
+        # if self.cell == cheese.cell:
+        #     self.mouseWin += 1
+        #     reward = 50
+        #     cheese.cell = pick_random_location()
 
         if self.lastState is not None:
             self.ai.learn(self.lastState, self.lastAction, state, reward)
@@ -172,8 +172,8 @@ class Mouse(setup.Agent):
         def cell_value(cell):
             if cat.cell is not None and (cell.x == cat.cell.x and cell.y == cat.cell.y):
                 return 3
-            elif cheese.cell is not None and (cell.x == cheese.cell.x and cell.y == cheese.cell.y):
-                return 2
+            # elif cheese.cell is not None and (cell.x == cheese.cell.x and cell.y == cheese.cell.y):
+            #     return 2
             else:
                 return 1 if cell.wall else 0
 
@@ -199,7 +199,7 @@ if __name__ == '__main__':
     world.add_agent(mouse5, cell=world.get_cell(9, 2))
     world.add_agent(mouse6, cell=world.get_cell(10, 2))
 
-    world.add_agent(cheese, cell=pick_random_location())
+    # world.add_agent(cheese, cell=pick_random_location())
     world.add_agent(cat, cell=world.get_cell(5, 10))
     world.display.activate()
     world.display.speed = cfg.speed
